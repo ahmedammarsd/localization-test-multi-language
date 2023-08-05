@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import './App.css'
 
+const language = [
+  {
+    code: "en",
+    name: "English",
+    country_code: "gb"
+  },
+  {
+    code: "ar",
+    name: "العربية",
+    country_code: "sa"
+  }
+]
 function App() {
-  const [count, setCount] = useState(0)
+  const {t} = useTranslation();
+
+  const releseDate = new Date("2023-05-08");
+  const timeDifference = new Date() - releseDate;
+  const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+   <div>
+    <div>
+      {
+        language.map( (code ,index) => (
+          <div key={index}>
+          <button>
+            {code.name}
+          </button>
+          <br /> <br />
+          </div>
+        ))
+      }
+    </div>
+    <h2>{t("key")}</h2>
+    <p>
+      {t("test_test")}
+    </p>
+    <p>
+      {t("number_days" ,{numberOfDays} )}
+    </p>
+   </div>
   )
 }
 

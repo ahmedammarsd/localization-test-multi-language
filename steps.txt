@@ -1,0 +1,8 @@
+after setup project :
+  
+   1- intall the package: npm install react-i18next i18next
+    go to website and copy the code Basic sample and set it in
+     index.js or main.js
+
+   2- install the package: npm install i18next-browser-languagedetector
+   3- install the package: npm install i18next-http-backend

@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -30,19 +30,26 @@ i18next
   //   }
   // },
   detction:{
-    order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
+    order: ['path','cookie', 'htmlTag', 'localStorage', 'subdomain'],
     caches: ['cookie'],
   },
   backend:{
     loadPath: '/assets/locales/{{lng}}/translation.json',
   },
-  react: { useSuspense: false}
+ // react: { useSuspense: false}
 });
 // initialized and ready to go!
 // i18next is already initialized, because the translation resources where passed via init function
 //document.getElementById('output').innerHTML = i18next.t('key');
+const Loading = () => (
+  <div>
+    LOADING...
+  </div>
+)
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <Suspense fallback={<Loading />}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Suspense>,
 )

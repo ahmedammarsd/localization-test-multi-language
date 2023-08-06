@@ -6,3 +6,4 @@ after setup project :
 
    2- install the package: npm install i18next-browser-languagedetector
    3- install the package: npm install i18next-http-backend
+   4- install the package: npm install js-cookie
